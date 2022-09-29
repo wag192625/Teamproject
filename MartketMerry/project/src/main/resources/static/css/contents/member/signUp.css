@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-@media (min-width: 992px) {.container {width: 940px;}}
-@media (min-width: 1200px) {.container {width: 1050px;}}
-.signup-all{
-    min-width: 1050px;
-=======
 
 
 /* ------------모바일용 반응형------------ */
@@ -589,7 +583,6 @@
 /*------기본 css적용--------*/
 .signup-all{
 
->>>>>>> Stashed changes
     margin-top: 50px;
     margin-bottom: 60px;
     background-color: rgb(255, 255, 255);
@@ -611,11 +604,7 @@
     font-weight: 650;
 }
 .signup-body{
-<<<<<<< Updated upstream
-    width: 640px;
-=======
 
->>>>>>> Stashed changes
     margin: 0px auto;
     display: block;
     font-size: 14px;
@@ -638,13 +627,8 @@
     margin: 0;
 }
 .signup-body-contents{
-<<<<<<< Updated upstream
-    width: 640px;
-    height: 694px;
-=======
     /*width: 640px;*/
     /*height: 694px;*/
->>>>>>> Stashed changes
 }
 .input-id, .input-pw, .input-name, .input-email, .input-phonNbr, .input-adress, .input-gender, .input-birth{
     display: inline-flex;
@@ -655,11 +639,7 @@
     font-size: 14px;
 }
 .input-id-menu, .input-pw-menu, .input-name-menu, .input-email-menu, .input-phonNbr-menu,.input-adress-menu , .input-gender-menu, .input-birth-menu{
-<<<<<<< Updated upstream
-    width: 139px;
-=======
     /*width: 139px;*/
->>>>>>> Stashed changes
     padding-top: 12px;
 }
 .label-id, .label-pw, .label-name, .label-email, .label-phonNbr,.label-adress, .label-gender, .label-birth{
@@ -683,11 +663,7 @@
     height: 45px;
 }
 .css-1bkd15f{
-<<<<<<< Updated upstream
-    width: 305px;
-=======
     /*width: 305px;*/
->>>>>>> Stashed changes
     height: 43px;
     padding: 0px 11px 1px 15px;
     border-radius: 4px;
@@ -701,11 +677,7 @@
     writing-mode: horizontal-tb !important;
 }
 .input-id-rightBtn, .input-email-rightBtn, .input-phonNbr-rightBtn{
-<<<<<<< Updated upstream
-    width: 120px;
-=======
     /*width: 120px;*/
->>>>>>> Stashed changes
     margin-left: 8px;
 }
 .id-duplchkBtn, .email-duplchkBtn, .phonNbr-duplchkBtn{
@@ -733,11 +705,7 @@
     padding: 0px 10px;
     text-align: center;
     overflow: hidden;
-<<<<<<< Updated upstream
-    width: 304px;
-=======
     /*width: 304px;*/
->>>>>>> Stashed changes
     height: 44px;
     border-radius: 4px;
     color: #9E007F;

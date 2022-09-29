@@ -1,8 +1,8 @@
-package com.example.project.controller.Member;
+package com.example.project.Controller.Member;
 
 
+import com.example.project.Entity.Member.Member;
 import com.example.project.Service.Member.MemberService;
-import com.example.project.entity.Member.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
-
 import javax.validation.Valid;
+
 import java.util.Map;
 
 @Controller
-@RequestMapping(path="/Member")
+@RequestMapping(path="/contents/member")
 public class memberController {
 
     private final MemberService memberService;
@@ -26,11 +26,20 @@ public class memberController {
     protected memberController(MemberService memberService){
         this.memberService = memberService;
     }
-    //회원가입
+
+    //일반 회원가입 페이지 가져오기
     @GetMapping("/signUp")
     public String insertMember(Member member, Model model){
         System.out.println("!!!------GetMapping------!!!");
         System.out.println("get방식으로 인해 실제적으로 데이터가 들어가는 곳은 post임");
+        System.out.println("아이디 :"+member.getId());
+        System.out.println("비밀번호 :"+member.getPassword());
+        System.out.println("이름 :"+member.getName());
+        System.out.println("이메일 :"+member.getEmail());
+        System.out.println("핸드폰 :"+member.getPhone());
+        System.out.println("주소 :"+member.getAddress());
+        System.out.println("성별 : "+member.getGender());
+        System.out.println("생년월일 : " + member.getBirthYear());
         Member insertMember = new Member(
                 member.getId(),
                 member.getPassword(),
@@ -39,16 +48,18 @@ public class memberController {
                 member.getPhone(),
                 member.getAddress(),
                 member.getGender(),
-                member.getYear()
+                member.getBirthYear(),
+                member.getBirthMonth(),
+                member.getBirthDate()
         );
         model.addAttribute("member", insertMember);
-        return "/contents/member/signUp_generalMember";
+        return "contents/member/signUp_generalMember";
     }
 
-    //회원가입
+    //일반 회원가입 데이터 전달
     @PostMapping("/signUp") //유효성 검사를 사용하기 위해서 @Valid 필요, 꼭일까? @Valid 뒤에 Entity를 입력할 것.
     public String insertMember(@Valid Member member, Errors errors, Model model){
-        memberService.insertMember(member);
+
         System.out.println("---------Check----------");
         System.out.println("Post방식으로 실질적으로 데이터가 저장되는 곳");
         System.out.println("아이디 :"+member.getId());
@@ -58,7 +69,9 @@ public class memberController {
         System.out.println("핸드폰 :"+member.getPhone());
         System.out.println("주소 :"+member.getAddress());
         System.out.println("성별 : "+member.getGender());
-        System.out.println("생년월일 : " + member.getYear());
+        System.out.println("생일년도 : " + member.getBirthYear());
+        System.out.println("생일월 : " + member.getBirthMonth());
+        System.out.println("생일날짜 : " + member.getBirthDate());
         //@Valid : 클라이언트 입력 데이터가 dto클래스로 캡슐화되어 넘어올 때, 유효성을 체크하라는 어노테이션
         //Member에서 작성한 어노테이션을 기준으로 유효성 체크
         //여기서 Errors객체는 Member의 필드 유효성 검사 오류에 대한 정보를 저장하고 노출한다.
@@ -79,13 +92,28 @@ public class memberController {
                 model.addAttribute(key, member_Availability.get(key));
             }
             //유효성을 통과하지 못할 경우 회원가입 페이지를 리턴
-            return "index";
+            return "/contents/member/signUp_generalMember";
         }
         //유효성 검사를 통과하고 난 이후의 페이지로 이동
-        memberService.insertMember(member);
-        return "index";
+
+        Member findMember = memberService.getMemberWhereId(member.getId());
+        if(findMember != null){
+            System.out.println("중복 된 아이디 입니다.");
+            return "/contents/member/signUp_generalMember";
+        }else{
+            memberService.insertMember(member);
+            return "/contents/member/login_corporateMember";
+        }
 
     }
+
+
+
+
+
+
+
+
     //회원 수정
     @GetMapping("회원수정 페이지")
     public String updateMember(Member member, Model model){
@@ -99,7 +127,9 @@ public class memberController {
                 member.getPhone(),
                 member.getAddress(),
                 member.getGender(),
-                member.getYear()
+                member.getBirthYear(),
+                member.getBirthMonth(),
+                member.getBirthDate()
         );
         model.addAttribute("member", insertMember);
         return "회원 수정 페이지";
@@ -117,7 +147,9 @@ public class memberController {
         System.out.println("핸드폰 :"+member.getPhone());
         System.out.println("주소 :"+member.getAddress());
         System.out.println("성별 : "+member.getGender());
-        System.out.println("생년월일 : " + member.getYear());
+        System.out.println("생일년도 : " + member.getBirthYear());
+        System.out.println("생일월 : " + member.getBirthMonth());
+        System.out.println("생일날짜 : " + member.getBirthDate());
         //@Valid : 클라이언트 입력 데이터가 dto클래스로 캡슐화되어 넘어올 때, 유효성을 체크하라는 어노테이션
         //Member에서 작성한 어노테이션을 기준으로 유효성 체크
         //여기서 Errors객체는 Member의 필드 유효성 검사 오류에 대한 정보를 저장하고 노출한다.
@@ -146,25 +178,28 @@ public class memberController {
     }
 
     //로그인
-    @GetMapping("/login")
-    public void loginView(){
+    @GetMapping("login_corporateMember")
+    public void loginView(Member member){
+        System.out.println("!!!------GetMapping------!!!");
+
 
     }
+
     //로그인
-    @PostMapping("/login")
+    @PostMapping("login_corporateMember")
     public String login(Member member, Model model){
         Member findMember = memberService.getMember(member);
         //아이디, 비번 일치해야지 로그인 가능
         //회원 로그인을 할 경우 아이디와 비밀번호가 일치하지 않으면 로그인 페이지로 되돌아 온다.
         if(findMember != null
-            && findMember.getId().equals(member.getId())
-            && findMember.getPassword().equals(member.getPassword())){
+                && findMember.getId().equals(member.getId())
+                && findMember.getPassword().equals(member.getPassword())){
             model.addAttribute("member", findMember);
             System.out.println("로그인 성공!!!");
-            return "index";
+            return "/init/index";
         }else{
             System.out.println("아이디, 비밀번호를 다시 입력해주세요!");
-            return "/contents/member/login_generalMember";
+            return "/contents/member/login_corporateMember";
         }
     }
     @GetMapping("로그아웃")

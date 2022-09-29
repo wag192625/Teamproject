@@ -1,6 +1,6 @@
 package com.example.project.Service.Member;
 
-import com.example.project.entity.Member.Member;
+import com.example.project.Entity.Member.Member;
 import org.springframework.validation.Errors;
 
 import java.util.Map;
@@ -19,5 +19,6 @@ public interface MemberService {
     public Member getMember(Member member);
 
 
-
+    //아이디 중복확인할 때 쓰는 것.
+    Member getMemberWhereId(String id);
 }

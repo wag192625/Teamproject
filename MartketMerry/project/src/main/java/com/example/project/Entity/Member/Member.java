@@ -1,4 +1,4 @@
-package com.example.project.entity.Member;
+package com.example.project.Entity.Member;
 
 
 import lombok.*;
@@ -59,9 +59,16 @@ public class Member {
     private String gender;
 
     @Column(name = "member_year")
-    @Pattern(regexp = "(?=.*[0-9])(?=.*\\W)(?=\\S+$).{8,16}", message = "생년월일을 다시 확인해주세요.")
-    private String year;
+    @Pattern(regexp = "(?=.*[0-9]).{4}", message = "생년월일을 다시 확인해주세요.")
+    private String birthYear;
 
-//    (년,월,일 html 상에서 나누어져있음 타임리프 연결 시 value 어떻게 기입)
+    @Column(name = "member_month")
+    @Pattern(regexp = "(?=.*[0-9]).{2}", message = "생년월일을 다시 확인해주세요.")
+    private String birthMonth;
+
+    @Column(name = "member_date")
+    @Pattern(regexp = "(?=.*[0-9]).{2}", message = "생년월일을 다시 확인해주세요.")
+    private String birthDate;
+
 
 }
