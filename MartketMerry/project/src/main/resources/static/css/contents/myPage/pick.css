@@ -1,11 +1,63 @@
+<<<<<<< Updated upstream
 @media (min-width: 992px) {.container {width: 940px;}}
 @media (min-width: 1200px) {.container {width: 1050px;}}
+=======
+
+/*html{*/
+/*    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;*/
+/*}*/
+a:link {
+    color: inherit;
+}
+a:visited {
+    color: inherit;
+}
+a:hover {
+    color: inherit;
+}
+a:active {
+    color: inherit;
+}
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+@media all and (min-width:1132px) {
+    /*.container {*/
+    /*    max-width: 100%;*/
+    /*    padding: 0 20%;*/
+    /*}*/
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 1050px;
+        /*max-width: 100%;*/
+        padding: 0;
+    }
+}
+/*@media (min-width: 768px) {*/
+/*    .container, .container-md, .container-sm {*/
+/*        max-width: 100%;*/
+/*    }*/
+/*}*/
+/*@media (min-width: 576px){*/
+/*    .container, .container-sm {*/
+/*    !*max-width: 100%;*!*/
+/*    !*}*!*/
+/*}*/
+
+
+>>>>>>> Stashed changes
 ol, ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 /* css 태그 기본값 삭제할지 물어볼 것 */
+<<<<<<< Updated upstream
 
 
 .mypage_all {
@@ -16,6 +68,14 @@ ol, ul {
 
 
 
+=======
+.mypage_all {
+    justify-content: center;
+    /*width: 100%;*/
+}
+
+
+>>>>>>> Stashed changes
 .mypage_top {
     width: 100%;
     padding: 50px 0;
@@ -26,9 +86,17 @@ ol, ul {
     display: flex;
     width: 100%;
     /* height: 390px; 이후 하단 배너 추가시 추가*/
+<<<<<<< Updated upstream
     background: #f7f7f7;
     padding: 30px;
 }
+=======
+    /*background: #f7f7f7;*/
+    background: #f7f7f7;
+    padding: 30px;
+}
+
+>>>>>>> Stashed changes
 .user_grade {
     /* height: 152px; */
     padding: 30px;
@@ -36,6 +104,11 @@ ol, ul {
     flex-direction: column;
     background-color: #ffffff;
     justify-content: space-between;
+<<<<<<< Updated upstream
+=======
+    max-height: 211px;
+    margin: 0 4px 0 0;
+>>>>>>> Stashed changes
 }
 .user_grade_area {
     width: 312px;
@@ -52,7 +125,12 @@ ol, ul {
     border-radius: 3px;
     border: solid 1px gray;
     font-size: 14px;
+<<<<<<< Updated upstream
     color: #fff;
+=======
+    background-color: rgb(255, 255, 255);
+    color: rgb(148, 146, 150);
+>>>>>>> Stashed changes
 }
 .user_grade_name {
     overflow: hidden;
@@ -69,17 +147,41 @@ ol, ul {
 
 
 .mypageBu {
+<<<<<<< Updated upstream
     width: 151px;
+=======
+    width: 100%;
+    justify-content: center;
+>>>>>>> Stashed changes
     height: 42px;
     border: 1px solid #f4f4f3;
     border-radius: 30px;
     background-color: #f4f4f4;
+<<<<<<< Updated upstream
     font-size: 13px;
     color: #333;
     line-height: 40px;
     text-align: center;
 }
 /* 적립금~ */
+=======
+    font-size: 16px;
+    color: #333;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    word-break: keep-all;
+}
+/* 적립금~ */
+.mypage_right{
+    display: flex;
+    flex-grow: 1;
+    width: 220px;
+    flex-direction: column;
+    /*margin-left: 4px*/
+}
+>>>>>>> Stashed changes
 .mypage_right2{
     flex-grow: 1;
     display: flex;
@@ -93,7 +195,11 @@ ol, ul {
 
 .mypage_box {
     flex-grow: 1;
+<<<<<<< Updated upstream
     width: 192px;
+=======
+    width: 30%;
+>>>>>>> Stashed changes
     background-color: #fff;
     padding: 26px 0 30px 30px;
     height: 145px;
@@ -104,13 +210,18 @@ ol, ul {
 .mypageBoxBu {
     display: flex;
     flex-grow: 1;
+<<<<<<< Updated upstream
     height: 63px;
+=======
+    height: 62px;
+>>>>>>> Stashed changes
     padding: 20px 30px;
     flex-direction: row;
     justify-content: space-between;
     background-color: #ffffff;
 }
 
+<<<<<<< Updated upstream
 /* 이후 마이컬리 CSS */
 .mypage_tab {
     padding-top: 65px;
@@ -118,6 +229,45 @@ ol, ul {
     margin: 0 auto;
 
 }
+=======
+.mypage_right2 .text{
+    /*    텍스트*/
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #333;
+    position: relative;
+    width: 100%;
+    word-break: keep-all;
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.mypage_right2 .text2{
+    /*text-align: right;*/
+    font-size: 20px;
+    color: #5f0080;
+    line-height: 28px;
+    /*padding: 0 20px 0 0;*/
+    width: 50px;
+    word-break: keep-all;
+
+}
+
+
+
+/* 이후 마이컬리 CSS */
+.mypage_tab {
+    padding-top: 65px;
+    /*width: 1050px;*/
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+/*float 나눠주는거*/
+>>>>>>> Stashed changes
 .mypage_tab::after{
     content: '';
     display: block;
@@ -126,8 +276,15 @@ ol, ul {
 
 .mypage_tab .tab_left{
     float: left;
+<<<<<<< Updated upstream
     width: 200px;
 }
+=======
+    width: 15%;
+}
+
+
+>>>>>>> Stashed changes
 .mypage_tab .title {
     padding: 5px 0 35px 1px;
     font-weight: 700;
@@ -140,11 +297,19 @@ ol, ul {
 .mypage_tab .category{
     border: 1px solid #f2f2f2;
     border-bottom: 0;
+<<<<<<< Updated upstream
 }
 
 .mypage_tab ul {
     font-family: noto sans;
     font-weight: 400;
+=======
+    width: 100%;
+}
+
+.mypage_tab ul {
+    font-weight: 600;
+>>>>>>> Stashed changes
     letter-spacing: 0;
 }
 .mypage_tab ul li {
@@ -162,6 +327,10 @@ ol, ul {
     color: #666;
     line-height: 20px;
     letter-spacing: -.3px;
+<<<<<<< Updated upstream
+=======
+    word-break: keep-all;
+>>>>>>> Stashed changes
 }
 
 .mypage_tab ul li a:hover {
@@ -177,6 +346,7 @@ ol, ul {
 
 .mypage_tab .tab_right{
     float: right;
+<<<<<<< Updated upstream
     width: 820px;
 }
 .header {
@@ -184,6 +354,22 @@ ol, ul {
     border-bottom: 2px solid #333;
 }
 .title {
+=======
+    width: 80%;
+}
+
+/*@media (max-width: 768px) {*/
+/*    .tab_right{*/
+/*        max-width: 200px;*/
+/*    }*/
+/*}*/
+
+.tab_right .header {
+    padding: 5px 0 34px;
+    border-bottom: 2px solid #333;
+}
+.tab_right .title {
+>>>>>>> Stashed changes
     height: 36px;
     font-weight: 700;
     font-size: 24px;
@@ -191,7 +377,11 @@ ol, ul {
     color: #333;
     letter-spacing: -.5px;
 }
+<<<<<<< Updated upstream
 .sub_tilte {
+=======
+.title .sub_title {
+>>>>>>> Stashed changes
     padding-left: 11px;
     font-size: 14px;
     color: #999;
@@ -228,4 +418,55 @@ ol, ul {
     font-weight: 500;
     text-align: center;
     outline: none;
+<<<<<<< Updated upstream
+=======
+}
+
+/*ㅡㅡㅡㅡㅡㅡㅡ찜 아이템 추가시ㅡㅡㅡㅡㅡㅡㅡ*/
+.addPick {
+    padding: 0 20px
+}
+.addPick .pick_area{
+    width: 100%;
+    height: 128px;
+    padding: 22px 0;
+    display: flex;
+    background-color: #f7f7f7
+}
+.addPick .pick_image{
+    width: 60px;
+    height: 78px;
+    margin: 1px
+}
+.addPick .pick_text {
+    margin: 0 20px;
+    font-size: 16px;
+    flex-grow: 1;
+    display: block
+}
+.addPick .pick_bu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+
+
+
+.tab_right button{
+    width: 104px;
+    height: 36px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    font-weight: 500;
+    justify-content: space-evenly;
+    /*margin-bottom: 8px;*/
+}
+.tab_right .add_bu{
+    /*margin-top: 8px;*/
+    color: #9E007F;
+    border: 1px solid #9E007F;
+>>>>>>> Stashed changes
 }

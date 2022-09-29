@@ -1,0 +1,248 @@
+/* 모바일용 반응형 */
+
+@media (min-width:360px) and (max-width:767px ){
+    /*.container{*/
+    /*    margin-left: 1em!important;*/
+    /*    margin-right: 1em!important;*/
+    /*}*/
+    .payment-Completed-contents {
+        width: 270px!important;
+        padding: 10px 0;
+        margin: 0 auto;
+    }
+    .payment-Completed-contents{
+        margin: 0px 0px 0px 0px!important;
+    }
+    .payment-Completed-inputarea{
+        padding: 0px 0px 0px 0px!important;
+        width: 356px!important;
+    }
+}
+/* 태블릿용 반응형 */
+
+@media (min-width:768px) and (max-width: 994px){
+    .payment-Completed-contents {
+        width: 500px!important;
+        padding: 10px 0;
+        margin: 0 auto;
+    }
+}
+
+/* 컴퓨터용 반응형 */
+
+@media (min-width:1132px) and (max-width:995px){
+
+
+}
+/*------기본 css적용------------*/
+.payment-Completed-contents-all{
+    background: rgb(244, 244, 244);
+    width: 100%;
+    height: fit-content;
+}
+.payment-Completed-contents{
+    width: 1050px;
+    padding: 60px 0;
+    margin: 0 auto;
+}
+.payment-Completed-inputarea{
+    position: relative;
+    width: 400px;
+    padding: 30px;
+    margin: 0px auto;
+    background: rgb(255, 255, 255);
+    text-align: center;
+}
+/* <!-- 주문이 완료되었습니다. 내일 아침에 만나요!  --> */
+.payment-Completed-firstbox{
+    padding: 56px 0px;
+    text-align: center;
+}
+/* firsttop-img */
+.css-ypnlzr {
+    width: 50px;
+    height: 50px;
+}
+.payment-Complted-firstbox-slogun{
+    font-weight: bold;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: #9E007F;
+}
+
+img, legend {
+    border: 0;
+    vertical-align: top;
+}
+
+canvas, img, video {
+    max-width: 100%;
+}
+.payment-Complted-firstbox-info{
+    padding-top: 24px;
+    font-size: 18px;
+    line-height: 26px;
+}
+.payment-Complted-firstbox-username{
+    font-size: 20px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    box-sizing: border-box;
+
+
+}
+.payment-Complted-firstbox-goodbye{
+    font-weight: bold;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.payment-Completed-secondbox{
+    border-top: 1px solid rgb(244, 244, 244);
+    padding-top: 6px;
+    text-align: left;
+    display: block;
+}
+.payment-Completed-secondbox-cash{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+/* 결제금액 및 적립금 css */
+.css-1a1jcfo {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.css-vmo0an {
+    width: 100px;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+}
+.css-21ugym {
+    text-align: right;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: bold;
+}
+.css-hfgifi {
+    padding-left: 2px;
+    font-size: 16px;
+    font-weight: normal;
+    vertical-align: bottom;
+}
+.css-13515y6 {
+    min-width: 162px;
+    text-align: right;
+}
+.css-r9z3y0 {
+    font-size: 18px;
+    line-height: 24px;
+    text-align: right;
+    color: #9E007F;
+}
+.css-hfgifi {
+    padding-left: 2px;
+    font-size: 16px;
+    font-weight: normal;
+    vertical-align: bottom;
+}
+.css-98lqc0 {
+    text-align: right;
+    color: #9E007F;
+    display: block;
+    width: auto;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+}
+/* 포장재안내 */
+.payment-Completed-thirdbox {
+    overflow: hidden;
+    margin-top: 32px;
+    border-radius: 3px;
+}
+/* 주의사항 */
+.payment-Completed-4thbox{
+    padding: 20px 0px;
+    text-align: left;
+
+}
+.payment-Completed-4thbox-litag {
+    position: relative;
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 19px;
+    padding-left: 11px;
+    color: rgb(153, 153, 153);
+    width: 340px;
+}
+.payment-Completed-4thbox-litag::before {
+    overflow: hidden;
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    margin: 9px 8px 0px -10px;
+    background: rgb(204, 204, 204);
+    vertical-align: top;
+    border-radius: 50%;
+    content: "";
+}
+
+.payment-Completed-btnbox{
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+}
+/* 버튼 */
+
+/* 주문상세보기 */
+.css-o6ldsh {
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 52px;
+    color: rgb(51, 51, 51);
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.css-ymwvow {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 550;
+}
+/* 쇼핑계속하기 */
+.css-6682oh {
+    margin-top: 10px;
+}
+
+
+
+.css-6682oh {
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 52px;
+    color: rgb(255, 255, 255);
+    background-color: #9E007F;
+    border: 0px none;
+    border-radius: 10px;
+}

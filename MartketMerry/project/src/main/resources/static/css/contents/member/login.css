@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 @media (min-width: 992px) {.container {width: 940px;}}
 @media (min-width: 1200px) {.container {width: 1050px;}}
 @media (min-width: 768px) {
@@ -5,6 +6,45 @@
         font-size: 3.5rem;
     }
 }
+=======
+/* ----------- 전체 약속 틀 ------------- */
+/* 모바일용 반응형 */
+
+@media (min-width:360px) and (max-width:767px ){
+    .inputId, .inputPw, .findIdOrPw, .login-btn, .signup-btn{
+        width: 290px!important;
+    }
+    .login-all{
+        display: flex;
+        flex-wrap: wrap;
+        width: 359px;
+    }
+    .login-body{
+        margin-left: 5%!important;
+        width: 359px;
+    }
+    .login-header{
+        margin-left: 135px!important;
+    }
+
+}
+/* 태블릿용 반응형 */
+
+@media (min-width:768px) and (max-width: 994px){
+    .login-body{
+        margin-left: 15%!important;
+    }
+}
+
+/* 컴퓨터용 반응형 */
+
+@media (min-width:1132px) and (max-width:995px){
+
+
+}
+
+/*-----css적용 -----------*/
+>>>>>>> Stashed changes
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -16,8 +56,13 @@
 
 /* 220911 소연 수정 */
 .login-all{
+<<<<<<< Updated upstream
     height: 345.95px;
     min-width: 1050px;
+=======
+    /*반응형 때문에 수정 height: 345.95px;*/
+    /*반응형 때문에 수정 min-width: 1050px;*/
+>>>>>>> Stashed changes
     margin-top: 90px;
     margin-bottom: 60px;
     background-color: rgb(255,255,255);
@@ -26,7 +71,11 @@
 
 }
 .login-header{
+<<<<<<< Updated upstream
     margin-left: 42%;
+=======
+    margin-left: 43%;
+>>>>>>> Stashed changes
     font-weight: 800;
     font-size: 20px;
     line-height: 20px;

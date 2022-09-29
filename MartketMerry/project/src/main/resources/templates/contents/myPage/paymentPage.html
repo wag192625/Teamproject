@@ -23,6 +23,7 @@
   <link rel="stylesheet" type="text/css" href="/static/css/contents/member/login.css">
   <link rel="stylesheet" type="text/css" href="/static/css/contents/customerService.css">
   <link rel="stylesheet" type="text/css" href="/static/css/footer/footer.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/contents/paymentCompleted.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
@@ -198,67 +199,64 @@
 <!--  </header>-->
 <!--</div>-->
 
-
 <!-- contents -->
-<div class="customer-service-all">
-  <div class="input-customer-service-area">
-    <!-- contents leftbar -->
-    <div class="customer-service-leftbar">
-      <div class="customer-service-leftbar-title">
-        고객센터
-      </div>
-      <ul class="customer-service-leftbar-body" style="padding-left:0;">
-        <li class="customer-service-leftbar-li-menu">
-          <a class="customer-service-leftbar-first-a">공지사항
-            <span class="customer-service-leftbar-img"></span>
-          </a>
-        </li>
-        <li class="customer-service-leftbar-li-menu">
-          <a class="customer-service-leftbar-first-a">자주하는 질문
-            <span class="customer-service-leftbar-img"></span>
-          </a>
-        </li>
-        <li class="customer-service-leftbar-li-menu">
-          <a class="customer-service-leftbar-first-a">1:1문의
-            <span class="customer-service-leftbar-img"></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!-- contents center -->
-    <div class="customer-service-center">
-      <div class="customer-service-center-title">
-        <h3 class="title-notice">공지사항</h3>
-        <span class="title-notice-info">마켓 메리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.</span>
-      </div>
-      <table class="notice-table">
-        <thead class="notice-table-thead">
-        <tr class="notice-table-thead-tr">
-          <th width="50" class="css-hyew2s e1ehwelz2">번호</th>
-          <th class="css-1k9dp5l e1ehwelz2">제목</th>
-          <th width="100" class="css-135p6jy e1ehwelz2">작성자</th>
-          <th width="100" class="css-135p6jy e1ehwelz2">작성일</th>
-        </tr>
-        </thead>
-        <tbody class="notice-talbe-tbody">
-        <tr class="css-x2m5rx e15yrn082">
-          <td class=" css-1k4d546 e15yrn081">공지</td>
-          <td class=" css-s1v1rc e15yrn081">[마켓메리] 개인정보처리방침 개정 내용 사전 안내 (2022. 01. 01 ~ )</td>
-          <td class=" css-1k4d546 e15yrn081">MarketMerry</td>
-          <td class=" css-vzhbq5 e15yrn081">2021-12-31</td></tr>
-        </tbody>
-      </table>
-      <!-- next button area -->
-      <div class="next-btn-area">
-        <div class="css-sxxs1g eytury60">
-          <button disabled="" type="button" class="css-rzcdhr e1hbwyso0">
-            <div class="css-7qb0sc e1ilyb3p0">이전</div>
-          </button>
-          <button type="button" class="css-1jwilit e1pk9060">
-            <div class="css-7qb0sc e1ilyb3p0">다음</div>
-          </button>
+<div class="payment-Completed-contents-all">
+  <div class="payment-Completed-contents">
+    <div class="payment-Completed-inputarea">
+      <!-- 주문이 완료되었습니다. 내일 아침에 만나요! box  -->
+      <div class="payment-Completed-firstbox">
+        <!-- 주문완료 이미지 box-->
+        <img src="/static/img/img_success_order_end.png"  class="css-ypnlzr e1hwfd030">
+
+        <!-- 주문완료 메세지 box -->
+        <div class="payment-Complted-firstbox-info">
+          <p class="payment-Complted-firstbox-slogun">Eat, drink and be merry!</p>
+          <p class="payment-Complted-firstbox-username">김준석님의 주문이 완료되었습니다.</p>
+          <p class="payment-Complted-firstbox-goodbye">내일 아침에 만나요! : )</p>
         </div>
       </div>
+
+      <!-- 결제금액 & 적립금 box -->
+      <div class="payment-Completed-secondbox">
+        <!-- 결제금액 div -->
+        <div class="payment-Completed-secondbox-cash">
+          <!-- 결제금액 글씨 (왼쪽)-->
+          <span class="css-vmo0an ea1mry76">결제금액</span>
+          <!-- 금액 (원 ) (오른쪽) -->
+          <span class="css-21ugym ea1mry73">10,000<span class="css-hfgifi ea1mry72">원</span></span>
+        </div>
+        <!-- 적립금 div -->
+        <div class="css-1a1jcfo ea1mry77">
+          <span class="css-vmo0an ea1mry76">적립금</span>
+          <span class="css-13515y6 ea1mry75">
+              <span class="css-r9z3y0 ea1mry74">+000<span class="css-hfgifi ea1mry72">원</span></span>
+              <span class="css-98lqc0 ea1mry70">적립금은 배송완료 다음날 3% 적립</span>
+            </span>
+        </div>
+      </div>
+      <!-- 포장재 안내 -->
+      <div class="payment-Completed-thirdbox">
+        <img src="https://res.kurly.com/kurly/img/2022/banner-paper_340_82_3x.png" alt="사람에게도 환경에도 더 이로운 배송 종이 포장재에 배송됩니다.">
+      </div>
+
+      <!-- 주의사항 -->
+      <div class="payment-Completed-4thbox">
+        <ul>
+          <li class="payment-Completed-4thbox-litag"> [주문완료] 상태일 경우에만 주문내역 상세페이지에서 주문 취소가 가능합니다.</li>
+          <li class="payment-Completed-4thbox-litag">엘리베이터 이용이 어려운 경우 6층 이상부터는 공동 현관 앞 또는 경비실로 대응 배송 될 수 있습니다.</li>
+          <li class="payment-Completed-4thbox-litag">주문 / 배송 및 기타 문의가 있을 경우, 1:1 문의에 남겨주시면 신속히 해결해드리겠습니다.</li>
+        </ul>
+      </div>
+      <!-- 주문상세보기 버튼, 쇼핑 계속하기 버튼 -->
+      <div class="payment-Completed-btnbox">
+        <button class="css-o6ldsh e4nu7ef3" type="button">
+          <span class="css-ymwvow e4nu7ef1">주문 상세보기</span>
+        </button>
+        <button class="css-6682oh e4nu7ef3" type="button">
+          <span class="css-ymwvow e4nu7ef1">쇼핑 계속하기</span>
+        </button>
+      </div>
+
     </div>
   </div>
 </div>
