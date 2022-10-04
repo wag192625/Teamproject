@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
-
 import java.util.Map;
 
 @Controller
@@ -53,7 +52,7 @@ public class memberController {
                 member.getBirthDate()
         );
         model.addAttribute("member", insertMember);
-        return "contents/member/signUp_generalMember";
+        return "signUp_lMember";
     }
 
     //일반 회원가입 데이터 전달
@@ -92,17 +91,17 @@ public class memberController {
                 model.addAttribute(key, member_Availability.get(key));
             }
             //유효성을 통과하지 못할 경우 회원가입 페이지를 리턴
-            return "/contents/member/signUp_generalMember";
+            return "signUp_lMember";
         }
         //유효성 검사를 통과하고 난 이후의 페이지로 이동
 
         Member findMember = memberService.getMemberWhereId(member.getId());
         if(findMember != null){
             System.out.println("중복 된 아이디 입니다.");
-            return "/contents/member/signUp_generalMember";
+            return "signUp_lMember";
         }else{
             memberService.insertMember(member);
-            return "/contents/member/login_corporateMember";
+            return "login_BisnessMember";
         }
 
     }
@@ -199,7 +198,7 @@ public class memberController {
             return "/init/index";
         }else{
             System.out.println("아이디, 비밀번호를 다시 입력해주세요!");
-            return "/contents/member/login_corporateMember";
+            return "login_BisnessMember";
         }
     }
     @GetMapping("로그아웃")

@@ -32,6 +32,7 @@ public class Member {
 
     // @Pattern = regexp에 들어가는 것은 (?=.*[0-9]) 우선 0~9숫자만 들어갈 수 있고, (?=.*[a-z]) 영어 소문자 = a-z만 들어간다.
     // message를 적은 이유는 나중에 유효성 검사에서 만약 이 제약에 맞게 아이디를 만들지 않을 경우 메세지가 호출됨
+
     @Id
     @Column(name = "member_id", length = 20, nullable = false, unique = true)
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{8,16}", message = "아이디는 8~16글자이며, 영문 소문자를, 숫자를 반드시 포함시켜주세요.")

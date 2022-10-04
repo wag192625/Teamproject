@@ -14,21 +14,17 @@ import java.util.Optional;
 @Service
 public class MemberServiceImp implements MemberService{
 
-
     private final MemberRepository memberRepo;
-
+    //서비스에서 레파지토리의 JPA를 이용하기 위하여 작성
 
     @Autowired
     protected  MemberServiceImp(MemberRepository memberRepo){
         this.memberRepo = memberRepo;
     }
 
-
-
     @Override //    회원가입
     public void insertMember(Member member) {
         memberRepo.save(member);
-
     }
 
     @Override //   회원 수정

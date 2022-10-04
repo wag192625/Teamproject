@@ -759,11 +759,11 @@
 
     <div class="container" style="width: 26rem; margin: 0 90px;">
       <h4 style="text-align:center;">상품 정보</h4>
-      <form class="form-inline" role="form">
+      <form th:action="@{/otherpage/addItem}" method="post" class="form-inline" role="form">
         <div class="separation">
           <div>상품명</div>
           <div>
-            <input type="text" class="form-control" placeholder="상품이름">
+            <input name="name" th:value="$" type="text" class="form-control" placeholder="상품이름">
           </div>
         </div>
         <div class="separation">

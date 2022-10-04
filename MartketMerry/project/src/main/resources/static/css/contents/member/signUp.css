@@ -288,13 +288,13 @@
         padding: 12px 0px 9px;
         cursor: default;
     }
-    .css-1pes2r6 {
-        overflow: hidden;
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        clip: rect(0px, 0px, 0px, 0px);
-    }
+    /*.css-1pes2r6 {*/
+    /*    overflow: hidden;*/
+    /*    position: absolute;*/
+    /*    width: 1px;*/
+    /*    height: 1px;*/
+    /*    clip: rect(0px, 0px, 0px, 0px);*/
+    /*}*/
     .css-198i9ca {
         min-width: 24px;
         min-height: 24px;
@@ -439,14 +439,14 @@
         padding: 0;
     }
 
-    .css-agvwxo {
-        overflow: hidden;
-        position: absolute;
-        clip: rect(0px, 0px, 0px, 0px);
-        clip-path: inset(50%);
-        width: 1px;
-        height: 1px;
-    }
+    /*.css-agvwxo {*/
+    /*    overflow: hidden;*/
+    /*    position: absolute;*/
+    /*    clip: rect(0px, 0px, 0px, 0px);*/
+    /*    clip-path: inset(50%);*/
+    /*    width: 1px;*/
+    /*    height: 1px;*/
+    /*}*/
     input[type="checkbox" i] {
         background-color: initial;
         cursor: default;
@@ -744,13 +744,13 @@
     padding: 12px 0px 9px;
     cursor: default;
 }
-.css-1pes2r6 {
-    overflow: hidden;
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    clip: rect(0px, 0px, 0px, 0px);
-}
+/*.css-1pes2r6 {*/
+/*    overflow: hidden;*/
+/*    position: absolute;*/
+/*    width: 1px;*/
+/*    height: 1px;*/
+/*    clip: rect(0px, 0px, 0px, 0px);*/
+/*}*/
 .css-198i9ca {
     min-width: 24px;
     min-height: 24px;
@@ -895,14 +895,14 @@ input[type=checkbox], input[type=radio] {
     padding: 0;
 }
 
-.css-agvwxo {
-    overflow: hidden;
-    position: absolute;
-    clip: rect(0px, 0px, 0px, 0px);
-    clip-path: inset(50%);
-    width: 1px;
-    height: 1px;
-}
+/*.css-agvwxo {*/
+/*    overflow: hidden;*/
+/*    position: absolute;*/
+/*    clip: rect(0px, 0px, 0px, 0px);*/
+/*    clip-path: inset(50%);*/
+/*    width: 1px;*/
+/*    height: 1px;*/
+/*}*/
 input[type="checkbox" i] {
     background-color: initial;
     cursor: default;
