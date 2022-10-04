@@ -25,19 +25,19 @@ public class ItemServiceImp implements ItemService{
 
     @Override   //상품 수정
     public void updateItem(Item item) {
-        Item updateItem = itemRepo.findBySeq(item.getseq()).get(); //이해 안됨
+        Item updateItem = itemRepo.findById(item.getId()).get(); //이해 안됨
         //Jpa레파지토리에 seq찾는게 없어서 어카징
-        updateItem.setPhoto(item.getPhoto());           //사진
-        updateItem.setName(item.getName());             //이름
-        updateItem.setText(item.getText());             //설명
-        updateItem.setPrice(item.getPrice());           //가격
-        updateItem.setDelivery(item.getDelivery());     //배송 선택
-        updateItem.setCategory1(item.getCategory1());   //분류1
-        updateItem.setCategory2(item.getCategory2());   //분류2
-        updateItem.setSeller(item.getSeller());         //업체,판매자명
-        updateItem.setPacking(item.getPacking());       //포장 타입
-        updateItem.setShelfLife(item.getShelfLife());   //유통기한
-        updateItem.setStock(item.getStock());           //재고 수량
+        updateItem.setPhoto(item.getPhoto());                   //사진
+        updateItem.setItemName(item.getItemName());             //이름
+        updateItem.setItemText(item.getItemText());             //설명
+        updateItem.setPrice(item.getPrice());                   //가격
+        updateItem.setDelivery(item.getDelivery());             //배송 선택
+        updateItem.setMainCategory(item.getMainCategory());   //분류1
+        updateItem.setSubCategory(item.getSubCategory());   //분류1
+        updateItem.setSeller(item.getSeller());                 //업체,판매자명
+        updateItem.setPacking(item.getPacking());               //포장 타입
+        updateItem.setShelfLife(item.getShelfLife());           //유통기한
+        updateItem.setStock(item.getStock());                   //재고 수량
 //        updateItem.set(item.get());
 
         //미구현
