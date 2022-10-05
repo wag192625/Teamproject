@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>addTest</title>
+</head>
+<body>
+<h1>addTest</h1>
+<tr>
+  <th>상품 이름</th>
+  <th>상품 설명</th>
+  <th>상품 가격</th>
+  <th>판매자</th>
+  <th>재고 수량</th>
+</tr>
+<tr th:each="itemList :${itemList}">
+  <td th:text="${itemList.itemName}"></td>
+  <td> <a th:text="${itemList.itemText}"></a></td>
+  <td th:text="${itemList.price}"></td>
+  <td th:text="${itemList.seller}"></td>
+  <td th:text="${itemList.stock}"></td>
+  <td>
+</body>
+</html>
