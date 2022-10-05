@@ -17,4 +17,17 @@ public interface ItemService {
     Optional<Item> getItem(String itemId);        //상품 불러오기? (멤버에 있길래 써봄)
 
     List<Item> getItemList(Item item);  //상품 리스트 배열로
+
+
+    void insertItems(Item item);
+
+    List<Item> itemLists();
+
+    List<Item> itemListss(List<Item> itemList);
+
+
+
+
+
+
 }

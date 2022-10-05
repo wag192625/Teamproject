@@ -62,4 +62,23 @@ public class ItemServiceImp implements ItemService{
     public List<Item> getItemList(Item item) {
         return (List<Item>) itemRepo.findAll(); //아이템 레파지토리의 모든 것을 찾겠다!
     }
+
+
+    //아이템 등록
+    @Override
+    public void insertItems(Item item) {
+        itemRepo.save(item);
+    }
+    //아이템 리스트
+    @Override
+    public List<Item> itemLists() {
+        return itemRepo.findAll();
+    }
+
+    @Override
+    public List<Item> itemListss(List<Item> itemList) {
+        return itemList;
+    }
+
+
 }

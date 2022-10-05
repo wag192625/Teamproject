@@ -3,10 +3,8 @@ package com.example.project.Entity.item;
 import lombok.*;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import java.util.Date;
 
 //@ToString         //왜 쓰는지 헷갈림
@@ -15,6 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor  //파라미터가 없는 기본 생성자 생성
 @AllArgsConstructor //모든 필드 값을 파라미터로 받는 생성자 생성
+@Builder
 @ToString
 public class Item {
 //  엔티티란? DB와 1:1 매칭되는 것
@@ -23,8 +22,8 @@ public class Item {
 //    업체명, 포장타입, 판매단위, 중량/용량, 원산지, 유통기한, 재고
 
 //    pirvate String id; findBySeq가 없어서 Id로 바꿔야 하나? (바꿈)
-    @Id //기본 키(PK Key) 지정
-    @GeneratedValue //기본 키의 자동 생성 전략 (?)
+   //기본 키(PK Key) 지정
+    @Id     // 기본 키의 자동 생성 전략 (?)
     private String  id;
 //    private String  seq;            //상품 번호
 

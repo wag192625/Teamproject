@@ -25,50 +25,98 @@ public class ItemController {
         this.itemService = itemService; // 생성자 주입 방식
     }
 
-    @GetMapping("/addItem")
-    public String insertItem() {
-//        System.out.println(item.getItemName());
-        System.out.println("get addItem1");
+//    @GetMapping("/addItem")
+//    public String insertItem() {
+////        System.out.println(item.getItemName());
+//        System.out.println("get addItem1");
+//
+//        return "/otherpage/addItem";
+//    }
 
-        return "/otherpage/addItem";
-    }
-
-    @PostMapping("/addItem")
-    public String insertItem(@Nullable Item item, Model model) {
-        System.out.println("-------------------------------------");
-        System.out.println(item);
-        System.out.println("-------------------------------------");
-
-//        //Item : 클라이언트에서 서버로 데이터를 받는 Entity
-//        //model : 서버에서 클라이언트로 데이터를 전송하는 매개체
-//        System.out.println(item.getItemName());
-//        //model : 컨트롤러에서 작업한 결과물을 HTML에 전달하기 위한 매개체
-//        //addAttribute : key/value으로 데이터를 저장하는 메서드
-//        //attributeName(key) : 뒤에 있는 value를 호출하기 위한 문자열(key)
-//        //memberService.getMemberList() : @Autowired로 선언된 MemberService 클래스를 호출하여
-//        //getMemberList()메서드 실행
-//        //model.addAttribute("Item", item); //키 Item,
+//    @PostMapping("/addItem")
+//    public String insertItem(@Nullable Item item, Model model) {
+//        System.out.println("-------------------------------------");
+//        System.out.println(item);
+//        System.out.println("-------------------------------------");
 //
-        String itemChoice = itemService.insertItem(item);    //들어온 값을
-        Optional<Item> test =  itemService.getItem(itemChoice);
-        model.addAttribute("itemList", test);   //엔티티의 아이템 리스트로 값 저장
-//
-//        itemService.insertItem(item);   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//
-//        //클라이언트에서 board객체를 받아서 매개변수로 사용
-//        //[1]BoardService의 inserBoard메서드 실행 >
-//        //[2]BoardRepository(CrudRepository).save(board)를 통해서 (JPA번역)
-//        //DB의 저장 (SQL)
-//        //insertBoard라는 메서드에 board객체 인자값으로 넣기
-//
-//        // 입력받은 데이터 추가하기 위하여 Jpa 상속받은 서비스 추가
-//        //데이터 오입력으로 400
-        return  "redirect:/otherpage/addItem";
+////        //Item : 클라이언트에서 서버로 데이터를 받는 Entity
+////        //model : 서버에서 클라이언트로 데이터를 전송하는 매개체
+////        System.out.println(item.getItemName());
+////        //model : 컨트롤러에서 작업한 결과물을 HTML에 전달하기 위한 매개체
+////        //addAttribute : key/value으로 데이터를 저장하는 메서드
+////        //attributeName(key) : 뒤에 있는 value를 호출하기 위한 문자열(key)
+////        //memberService.getMemberList() : @Autowired로 선언된 MemberService 클래스를 호출하여
+////        //getMemberList()메서드 실행
+////        //model.addAttribute("Item", item); //키 Item,
+////
+//        String itemChoice = itemService.insertItem(item);    //들어온 값을
+//        Optional<Item> test =  itemService.getItem(itemChoice);
+//        model.addAttribute("itemList", test);   //엔티티의 아이템 리스트로 값 저장
+////
+////        itemService.insertItem(item);   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+////
+////        //클라이언트에서 board객체를 받아서 매개변수로 사용
+////        //[1]BoardService의 inserBoard메서드 실행 >
+////        //[2]BoardRepository(CrudRepository).save(board)를 통해서 (JPA번역)
+////        //DB의 저장 (SQL)
+////        //insertBoard라는 메서드에 board객체 인자값으로 넣기
+////
+////        // 입력받은 데이터 추가하기 위하여 Jpa 상속받은 서비스 추가
+////        //데이터 오입력으로 400
+//        return  "redirect:/otherpage/addItem";
 
 
 
 //        //retrun 타입이 String이유 : HTML 파일명을 찾기 위해
 //
 //        //리스트로 받아오고 그거를 나타낼 수 있는 페이지 하나 만들어서 테스트해보기
+ //   }
+
+
+    @GetMapping("/addItem")
+    public String insertItems(Item item, Model model) {
+//        System.out.println(item.getItemName());
+        System.out.println("get addItem1");
+        Item item1 = new Item(
+                item.getId(),
+                item.getPhoto(),
+                item.getItemName(),
+                item.getItemText(),
+                item.getPrice(),
+                item.getDelivery(),
+                item.getMainCategory(),
+                item.getSubCategory(),
+                item.getSeller(),
+                item.getPacking(),
+                item.getShelfLife(),
+                item.getStock(),
+                item.getDetailText(),
+                item.getDetailPhoto()
+        );
+        model.addAttribute("item", item1);
+        return "/otherpage/addItem";
     }
+        @PostMapping("/addItem")
+                public String insertItemss(Item item, Model model) {
+            itemService.insertItems(item);
+            return "/otherpage/addItem";
+        }
+
+//    @GetMapping("여기 리스트")
+//    public String itemList(Model model){
+//        model.addAttribute("item", itemService.itemListss(itemService.itemLists()));
+//        return "리스트";
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
