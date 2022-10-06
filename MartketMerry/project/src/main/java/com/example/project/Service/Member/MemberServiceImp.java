@@ -25,20 +25,20 @@ public class MemberServiceImp implements MemberService{
     @Override //    회원가입
     public void insertMember(Member member) {
         memberRepo.save(member);
+
     }
 
     @Override //   회원 수정
     public void updateMember(Member member) {
-        Member updateMember = memberRepo.findById(member.getId()).get();
-        updateMember.setPassword(member.getPassword());
-        updateMember.setAddress(member.getAddress());
-        updateMember.setPhone(member.getPhone());
-        updateMember.setEmail(member.getEmail());
-
-        System.out.println(updateMember.getPassword());
-        System.out.println(updateMember.getAddress());
-        System.out.println(updateMember.getPhone());
-        System.out.println(updateMember.getEmail());
+        Member updateMember = memberRepo.findById(member.getMemberId()).get();
+        updateMember.setMemberPassword(member.getMemberPassword());
+        updateMember.setMemberAddress(member.getMemberAddress());
+        updateMember.setMemberPhone(member.getMemberPhone());
+        updateMember.setMemberEmail(member.getMemberEmail());
+        System.out.println(updateMember.getMemberPassword());
+        System.out.println(updateMember.getMemberAddress());
+        System.out.println(updateMember.getMemberPhone());
+        System.out.println(updateMember.getMemberEmail());
 
         memberRepo.save(updateMember);
     }
@@ -65,22 +65,22 @@ public class MemberServiceImp implements MemberService{
     //회원탈퇴
     @Override
     public void deleteMember(Member member) {
-        memberRepo.deleteById(member.getId());
+        memberRepo.deleteById(member.getMemberId());
     }
 
     @Override
     public Member getMember(Member member) {
         // 특정회원을 검색하여 리턴하고, 만약 검색 결과에 없으면 null을 리턴한다.
         // 로그인시에도 활용한다.
-        Optional<Member> findMember = memberRepo.findById(member.getId());
+        Optional<Member> findMember = memberRepo.findById(member.getMemberId());
         if(findMember.isPresent())
-            return memberRepo.findById(member.getId()).get();
+            return memberRepo.findById(member.getMemberId()).get();
         else return null;
     }
 
     //아이디 중복확인할 때 쓰는 것.
     @Override
-    public Member getMemberWhereId(String id) {
-        return memberRepo.findMemberById(id);
+    public Member getMemberWhereId(String memberId) {
+        return memberRepo.findMemberById(memberId);
     }
 }

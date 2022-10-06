@@ -1,7 +1,9 @@
 package com.example.project.Service.Item;
 
+import com.example.project.Entity.data.FileUploadEntity;
 import com.example.project.Entity.item.Item;
 import com.example.project.Repository.Item.ItemRepository;
+import com.example.project.Repository.fileTest.FileUploadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +14,16 @@ import java.util.Optional;
 public class ItemServiceImp implements ItemService{
 
     private final ItemRepository itemRepo;
+    private final FileUploadRepository fileUploadRepo;
     //서비스에서 레파지토리의 JPA를 이용하기 위하여 작성
 
     @Autowired  //Autowired는 왜 쓰이는가? = controller가 service를 주입당하겠다고 선언
-    protected ItemServiceImp(ItemRepository itemRepo){
+    protected ItemServiceImp(ItemRepository itemRepo,
+                             FileUploadRepository fileUploadRepo){
         this.itemRepo = itemRepo;
-        //왜 쓰는지?
+        this.fileUploadRepo = fileUploadRepo;
+        //this.~~ : 값이 변하지 않는 상수로 지정
+        //           = ~~ : 컨트롤러에 입력하기 위하여?? (확인 필요)
     }
 
     @Override   //상품 등록
@@ -78,6 +84,16 @@ public class ItemServiceImp implements ItemService{
     @Override
     public List<Item> itemListss(List<Item> itemList) {
         return itemList;
+    }
+
+    @Override
+    public Long insertFileUploadEntity(FileUploadEntity fileUploadEntity) {
+        return fileUploadRepo.save(fileUploadEntity).getId();
+    }
+
+    @Override
+    public List<FileUploadEntity> getFileUploadEntity(Long item_seq) {  //스트링타입이 아니라 롱으로 바꿔야 할까?
+        return fileUploadRepo.findByItemSeq(item_seq);  //메소드 이름 자체가 쿼리이다. 가 무슨뜻일까>
     }
 
 

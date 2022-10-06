@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>addTest</h1>
+<table>
 <tr>
   <th>상품 이름</th>
   <th>상품 설명</th>
@@ -13,12 +14,15 @@
   <th>판매자</th>
   <th>재고 수량</th>
 </tr>
-<tr th:each="itemList :${itemList}">
-  <td th:text="${itemList.itemName}"></td>
-  <td> <a th:text="${itemList.itemText}"></a></td>
-  <td th:text="${itemList.price}"></td>
-  <td th:text="${itemList.seller}"></td>
-  <td th:text="${itemList.stock}"></td>
+<tr th:each="itemLists :${item}"> <!-- item은  -->
+  <td th:text="${itemLists.itemName}"></td>
+  <td th:text="${itemLists.itemText}">/</td>
+  <td th:text="${itemLists.price}"></td>
+  <td th:text="${itemLists.seller}"></td>
+  <td th:text="${itemLists.stock}"></td>
   <td>
+</table>
+<br>
+<a href="/otherpage/addItem">상품등록 페이지로 이동</a>
 </body>
 </html>

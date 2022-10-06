@@ -1,5 +1,6 @@
 package com.example.project.Controller.item;
 
+import com.example.project.Entity.data.FileUploadEntity;
 import com.example.project.Entity.item.Item;
 import com.example.project.Service.Item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,15 +103,31 @@ public class ItemController {
         @PostMapping("/addItem")
                 public String insertItemss(Item item, Model model) {
             itemService.insertItems(item);
-            return "/otherpage/addItem";
+            return "redirect:/otherpage/addTest";
         }
 
-//    @GetMapping("여기 리스트")
-//    public String itemList(Model model){
-//        model.addAttribute("item", itemService.itemListss(itemService.itemLists()));
-//        return "리스트";
-//    }
+    @GetMapping("/addTest")
+    public String itemList(Model model){
+        model.addAttribute("item",
+                itemService.itemListss(
+                        itemService.itemLists()));
+        return "/otherpage/addTest";
+    }
 
+//    @PostMapping("/addItem")
+//    public String insertPhoto(Item item, @Nullable @RequestParam("기져올 데이터의 이름")MultipartFile[] uploadfile) {
+//        //@Nullable@RequestPanam(
+//        //MultipartFile을 클라이언트에서 받아오고, 데이터가 없더라도 허용(@Nullable)
+//        try{
+//            String Item_seq = itemService.insertItem(item);   //배낀곳에선 Long타입 선언한 item 사용
+//            List<FileUploadEntity> list = new ArrayList<>();
+//            for(MultipartFile file : uploadfile) {
+//                //MultipartFile로 클라이언트에서 온 데이터가 무결성 조건에 성립을 안하거나
+//                // 메타데이터가 없거나 문제가 생길 여지를 if 문으로 처리
+//            }
+//
+//        }
+//    }
 
 
 

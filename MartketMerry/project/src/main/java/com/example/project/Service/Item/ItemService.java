@@ -1,5 +1,6 @@
 package com.example.project.Service.Item;
 
+import com.example.project.Entity.data.FileUploadEntity;
 import com.example.project.Entity.item.Item;
 
 import java.util.List;
@@ -26,6 +27,12 @@ public interface ItemService {
     List<Item> itemListss(List<Item> itemList);
 
 
+
+    Long insertFileUploadEntity(FileUploadEntity fileUploadEntity);
+    // 엔티티에 데이터를 저장하기 위해
+    List<FileUploadEntity> getFileUploadEntity(Long item_seq);
+    // 아이템 entity는 String인데 파일~은 Long이어도 되는가?
+    // 카멜케이스 itemSeq가 아닌 스네이크케이스 item_seq 인 이유는?
 
 
 
