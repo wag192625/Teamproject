@@ -197,7 +197,7 @@ public class memberController {
                 && findMember.getMemberPassword().equals(member.getMemberPassword())){
             model.addAttribute("member", findMember);
             System.out.println("로그인 성공!!!");
-            return "/init/index";
+            return "/index";
         }else{
             System.out.println("아이디, 비밀번호를 다시 입력해주세요!");
             return "/contents/member/login_businessMember";
