@@ -33,42 +33,73 @@ public class Member {
     // @Pattern = regexp에 들어가는 것은 (?=.*[0-9]) 우선 0~9숫자만 들어갈 수 있고, (?=.*[a-z]) 영어 소문자 = a-z만 들어간다.
     // message를 적은 이유는 나중에 유효성 검사에서 만약 이 제약에 맞게 아이디를 만들지 않을 경우 메세지가 호출됨
     @Id
-    @Column(name = "memberId", length = 20, nullable = false, unique = true)
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{8,16}", message = "아이디는 8~16글자이며, 영문 소문자를, 숫자를 반드시 포함시켜주세요.")
+    @Column
     private String memberId;
 
-    @Column(name = "memberPassword", length = 18)
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}", message = "비밀번호는 8~16자 영문 대 소문자, 숫자를 포함한 특수문자를 사용하세요.")
+    @Column
     private String memberPassword;
 
-    @Column(name = "memberName")
+    @Column
     private String memberName;
 
-    @Email(message = "이메일 형식에 맞지 않습니다.")
-    @Column(name = "memberEmail")
+    @Column
     private String memberEmail;
 
-    @Column(name = "memberPhone")
-    @Pattern(regexp = "(?=.*[0-9]).{11}", message = "핸드폰 번호를 다시확인해주세요!.")
+    @Column
     private String memberPhone;
 
-    @Column(name= "memberAddress", length = 50)
+    @Column
     private String memberAddress;
 
-    @Column(name = "memberGender", length = 4)
+    @Column
     private String memberGender;
 
-    @Column(name = "memberBirthYear")
-    @Pattern(regexp = "(?=.*[0-9]).{4}", message = "생년월일을 다시 확인해주세요.")
+    @Column
     private String memberBirthYear;
 
-    @Column(name = "memberBirthMonth")
-    @Pattern(regexp = "(?=.*[0-9]).{2}", message = "생년월일을 다시 확인해주세요.")
+    @Column
     private String memberBirthMonth;
 
-    @Column(name = "memberBirthDate")
-    @Pattern(regexp = "(?=.*[0-9]).{2}", message = "생년월일을 다시 확인해주세요.")
+    @Column
     private String memberBirthDate;
 
+
+//    @Id
+//    @Column(name = "memberId", length = 20, nullable = false, unique = true)
+//    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{8,16}", message = "아이디는 8~16글자이며, 영문 소문자를, 숫자를 반드시 포함시켜주세요.")
+//    private String memberId;
+//
+//    @Column(name = "memberPassword", length = 18)
+//    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}", message = "비밀번호는 8~16자 영문 대 소문자, 숫자를 포함한 특수문자를 사용하세요.")
+//    private String memberPassword;
+//
+//    @Column(name = "memberName")
+//    private String memberName;
+//
+//    @Email(message = "이메일 형식에 맞지 않습니다.")
+//    @Column(name = "memberEmail")
+//    private String memberEmail;
+//
+//    @Column(name = "memberPhone")
+//    @Pattern(regexp = "(?=.*[0-9]).{11}", message = "핸드폰 번호를 다시확인해주세요!.")
+//    private String memberPhone;
+//
+//    @Column(name= "memberAddress", length = 50)
+//    private String memberAddress;
+//
+//    @Column(name = "memberGender", length = 4)
+//    private String memberGender;
+//
+//    @Column(name = "memberBirthYear")
+//    @Pattern(regexp = "(?=.*[0-9]).{4}", message = "생년월일을 다시 확인해주세요.")
+//    private String memberBirthYear;
+//
+//    @Column(name = "memberBirthMonth")
+//    @Pattern(regexp = "(?=.*[0-9]).{2}", message = "생년월일을 다시 확인해주세요.")
+//    private String memberBirthMonth;
+//
+//    @Column(name = "memberBirthDate")
+//    @Pattern(regexp = "(?=.*[0-9]).{2}", message = "생년월일을 다시 확인해주세요.")
+//    private String memberBirthDate;
 
 }
