@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ItemServiceImp implements ItemService{
@@ -58,23 +57,25 @@ public class ItemServiceImp implements ItemService{
         itemRepo.deleteById(item.getId());
     }
 
-    @Override   //멤버에 있길래 써봄
-    public Optional<Item> getItem(String itemChoice) {
-        Optional<Item>  sample = itemRepo.findById(itemChoice);
-        return sample;
-    }
+//    @Override   //멤버에 있길래 써봄
+//    public Optional<Item> getItem(String itemChoice) {
+//        Optional<Item>  sample = itemRepo.findById(itemChoice);
+//        return sample;
+//    }
 
-    @Override
-    public List<Item> getItemList(Item item) {
-        return (List<Item>) itemRepo.findAll(); //아이템 레파지토리의 모든 것을 찾겠다!
-    }
+//    @Override
+//    public List<Item> getItemList(Item item) {
+//        return (List<Item>) itemRepo.findAll(); //아이템 레파지토리의 모든 것을 찾겠다!
+//    }
 
 
     //아이템 등록
     @Override
     public void insertItems(Item item) {
         itemRepo.save(item);
+//        return itemRepo.save(item);
     }
+
     //아이템 리스트
     @Override
     public List<Item> itemLists() {
@@ -93,7 +94,7 @@ public class ItemServiceImp implements ItemService{
 
     @Override
     public List<FileUploadEntity> getFileUploadEntity(Long item_seq) {  //스트링타입이 아니라 롱으로 바꿔야 할까?
-        return fileUploadRepo.findByItemSeq(item_seq);  //메소드 이름 자체가 쿼리이다. 가 무슨뜻일까>
+        return fileUploadRepo.findByItemSeq(item_seq);  //메소드 이름 자체가 쿼리이다. 가 무슨뜻?>
     }
 
 

@@ -120,7 +120,7 @@ public class ItemController {
         //@Nullable@RequestPanam(
         //MultipartFile을 클라이언트에서 받아오고, 데이터가 없더라도 허용(@Nullable)
         try{
-            String Item_seq = itemService.insertItem(item);   //배낀곳에선 Long타입 선언한 item 사용
+            Item items = itemService.insertItems(item);   //배낀곳에선 Long타입 선언한 item 사용
             List<FileUploadEntity> list = new ArrayList<>();
             for(MultipartFile file : uploadfile) {
                 //MultipartFile로 클라이언트에서 온 데이터가 무결성 조건에 성립을 안하거나
