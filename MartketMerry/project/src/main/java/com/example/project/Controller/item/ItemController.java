@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller //디스패처 서블릿이 컨트롤러를 찾기 위해서 @Controller라는 어노테이션을 선언
 @RequestMapping(path = "/otherpage")   //미리 경로를 지정해줘서 앞 경로를 생략 가능하게 됨
@@ -114,20 +115,30 @@ public class ItemController {
         return "/otherpage/addTest";
     }
 
-//    @PostMapping("/addItem")
-//    public String insertPhoto(Item item, @Nullable @RequestParam("기져올 데이터의 이름")MultipartFile[] uploadfile) {
-//        //@Nullable@RequestPanam(
-//        //MultipartFile을 클라이언트에서 받아오고, 데이터가 없더라도 허용(@Nullable)
-//        try{
-//            String Item_seq = itemService.insertItem(item);   //배낀곳에선 Long타입 선언한 item 사용
-//            List<FileUploadEntity> list = new ArrayList<>();
-//            for(MultipartFile file : uploadfile) {
-//                //MultipartFile로 클라이언트에서 온 데이터가 무결성 조건에 성립을 안하거나
-//                // 메타데이터가 없거나 문제가 생길 여지를 if 문으로 처리
-//            }
-//
-//        }
-//    }
+    @PostMapping("/addItem")
+    public String insertPhoto(Item item, @Nullable @RequestParam("기져올 데이터의 이름")MultipartFile[] uploadfile) {
+        //@Nullable@RequestPanam(
+        //MultipartFile을 클라이언트에서 받아오고, 데이터가 없더라도 허용(@Nullable)
+        try{
+            String Item_seq = itemService.insertItem(item);   //배낀곳에선 Long타입 선언한 item 사용
+            List<FileUploadEntity> list = new ArrayList<>();
+            for(MultipartFile file : uploadfile) {
+                //MultipartFile로 클라이언트에서 온 데이터가 무결성 조건에 성립을 안하거나
+                // 메타데이터가 없거나 문제가 생길 여지를 if 문으로 처리
+                if(!file.isEmpty()){
+                    FileUploadEntity
+                            entity = new FileUploadEntity(
+                                    null,
+                                    UUID.randomUUID().toString(),
+                            file.getContentType(),
+                            file.getName(),
+                            file.getOriginalFilename(),
+                            Item_seq);
+                }
+            }
+
+        }
+    }
 
 
 
