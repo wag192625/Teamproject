@@ -24,7 +24,7 @@ public class Item {
 //    pirvate String id; findBySeq가 없어서 Id로 바꿔야 하나? (바꿈)
    //기본 키(PK Key) 지정
     @Id     // 기본 키의 자동 생성 전략 (?)
-    private String  id;
+    private Long  id;
 //    private String  seq;            //상품 번호
 
     @Column     //컬럼이란? 객체 필드를 테이블의 컬럼에 매핑시켜줌

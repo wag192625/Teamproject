@@ -25,12 +25,12 @@ public class ItemServiceImp implements ItemService{
         //           = ~~ : 컨트롤러에 입력하기 위하여?? (확인 필요)
     }
 
-    @Override   //상품 등록
-    public String insertItem(Item item) {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-        //아이템을 itemRepo에 저장하겠다.
-        return itemRepo.save(item).getId();
-    }
+//    @Override   //상품 등록
+//    public String insertItem(Item item) {
+//        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+//        //아이템을 itemRepo에 저장하겠다.
+//        return itemRepo.save(item).getId();
+//    }
 
     @Override   //상품 수정
     public void updateItem(Item item) {
@@ -71,9 +71,9 @@ public class ItemServiceImp implements ItemService{
 
     //아이템 등록
     @Override
-    public void insertItems(Item item) {
-        itemRepo.save(item);
-//        return itemRepo.save(item);
+    public Long insertItems(Item item) {
+//        itemRepo.save(item);
+        return itemRepo.save(item).getId();
     }
 
     //아이템 리스트

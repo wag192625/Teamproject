@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller //디스패처 서블릿이 컨트롤러를 찾기 위해서 @Controller라는 어노테이션을 선언
 @RequestMapping(path = "/otherpage")   //미리 경로를 지정해줘서 앞 경로를 생략 가능하게 됨
@@ -114,20 +117,39 @@ public class ItemController {
         return "/otherpage/addTest";
     }
 
-//    @PostMapping("/addItem")
-//    public String insertPhoto(Item item, @Nullable @RequestParam("기져올 데이터의 이름")MultipartFile[] uploadfile) {
-//        //@Nullable@RequestPanam(
-//        //MultipartFile을 클라이언트에서 받아오고, 데이터가 없더라도 허용(@Nullable)
-//        try{
-//            String Item_seq = itemService.insertItem(item);   //배낀곳에선 Long타입 선언한 item 사용
-//            List<FileUploadEntity> list = new ArrayList<>();
-//            for(MultipartFile file : uploadfile) {
-//                //MultipartFile로 클라이언트에서 온 데이터가 무결성 조건에 성립을 안하거나
-//                // 메타데이터가 없거나 문제가 생길 여지를 if 문으로 처리
-//            }
-//
-//        }
-//    }
+    @PostMapping("/addItem")
+    public String insertPhoto(Item item, @Nullable @RequestParam("Photo")MultipartFile[] Photo) {
+        //@Nullable@RequestPanam(
+        //MultipartFile을 클라이언트에서 받아오고, 데이터가 없더라도 허용(@Nullable)
+        try{
+            Long item_seq = itemService.insertItems(item);   //배낀곳에선 Long타입 선언한 item 사용
+            List<FileUploadEntity> list = new ArrayList<>();
+            for(MultipartFile file : Photo) {
+                //MultipartFile로 클라이언트에서 온 데이터가 무결성 조건에 성립을 안하거나
+                // 메타데이터가 없거나 문제가 생길 여지를 if 문으로 처리
+                if (!file.isEmpty()) {
+                    FileUploadEntity
+                            entity = new FileUploadEntity(
+                                    null,
+                            UUID.randomUUID().toString(),
+                            file.getContentType(),
+                            file.getName(),
+                            file.getOriginalFilename(),
+                            item_seq
+                    );  //fileuploadtable에 저장
+                    itemService.insertFileUploadEntity(entity);
+                    list.add(entity);
+                    File newFileName = new File(entity.getUuid() + "-" + entity.getOriginalFileName());
+                    //서버에 이미지 파일
+                    file.transferTo(newFileName);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/otherpage/addTest";
+    }
 
 
 
