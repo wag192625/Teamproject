@@ -16,9 +16,14 @@ public class FileUploadEntity {
     @Id
     @GeneratedValue //GeneratedValue란?
     private Long    id;
+
     private String  uuid;
+
     private String  contentType;
+
     private String  name;
-    private String  originalFileName;
-    private Long   itemSeq;
+
+    private String  originalFilename;
+
+    private Long    itemSeq;
 }

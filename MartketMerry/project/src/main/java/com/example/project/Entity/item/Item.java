@@ -24,11 +24,12 @@ public class Item {
 //    pirvate String id; findBySeq가 없어서 Id로 바꿔야 하나? (바꿈)
    //기본 키(PK Key) 지정
     @Id     // 기본 키의 자동 생성 전략 (?)
+    @GeneratedValue
     private Long  id;
 //    private String  seq;            //상품 번호
 
-    @Column     //컬럼이란? 객체 필드를 테이블의 컬럼에 매핑시켜줌
-    private String  photo;          //상품 사진 저장한 url
+//    @Column     //컬럼이란? 객체 필드를 테이블의 컬럼에 매핑시켜줌
+//    private String  photo;          //상품 사진 저장한 url
     @Column
     private String  itemName;       //상품 이름
     @Column
@@ -46,7 +47,7 @@ public class Item {
     @Column
     private String  packing;        //포장타입
     @Column
-    private String    shelfLife;      //유통기한
+    private String   shelfLife;      //유통기한
     //타입이 안맞는다 함 (int에서 String으로 바꾸니 됨)
     @Column
     private int     stock;          //재고 수량
@@ -55,8 +56,8 @@ public class Item {
     @Column
     private String detailText;      //상세 설명
 
-    @Column
-    private String detailPhoto;     //상세 사진
+//    @Column
+//    private String detailPhoto;     //상세 사진
     //타입이 안맞는다 함
 
 

@@ -36,7 +36,7 @@ public class ItemServiceImp implements ItemService{
     public void updateItem(Item item) {
         Item updateItem = itemRepo.findById(item.getId()).get(); //이해 안됨
 
-        updateItem.setPhoto(item.getPhoto());                   //사진
+//        updateItem.setPhoto(item.getPhoto());                   //사진
         updateItem.setItemName(item.getItemName());             //이름
         updateItem.setItemText(item.getItemText());             //설명
         updateItem.setPrice(item.getPrice());                   //가격
@@ -49,7 +49,7 @@ public class ItemServiceImp implements ItemService{
         updateItem.setStock(item.getStock());                   //재고 수량
         
         updateItem.setDetailText(item.getDetailText());         //상세 설명
-        updateItem.setDetailPhoto(item.getDetailPhoto());       //상세 사진
+//        updateItem.setDetailPhoto(item.getDetailPhoto());       //상세 사진
     }
 
     @Override   //상품 삭제
@@ -78,9 +78,14 @@ public class ItemServiceImp implements ItemService{
 
     //아이템 리스트
     @Override
-    public List<Item> itemLists() {
+    public List<Item> getItemLists(Item item) {
         return itemRepo.findAll();
     }
+//    //아이템 리스트
+//    @Override
+//    public List<Item> itemLists(Item item) {
+//        return itemRepo.findAll();
+//    }
 
     @Override
     public List<Item> itemListss(List<Item> itemList) {
@@ -95,6 +100,11 @@ public class ItemServiceImp implements ItemService{
     @Override
     public List<FileUploadEntity> getFileUploadEntity(Long item_seq) {  //스트링타입이 아니라 롱으로 바꿔야 할까?
         return fileUploadRepo.findByItemSeq(item_seq);  //메소드 이름 자체가 쿼리이다. 가 무슨뜻?>
+    }
+
+    @Override
+    public Item getItem(Item item) {
+        return itemRepo.findById(item.getId()).get();
     }
 
 

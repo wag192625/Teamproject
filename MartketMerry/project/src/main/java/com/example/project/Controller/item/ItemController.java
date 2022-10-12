@@ -3,23 +3,28 @@ package com.example.project.Controller.item;
 import com.example.project.Entity.data.FileUploadEntity;
 import com.example.project.Entity.item.Item;
 import com.example.project.Service.Item.ItemService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+//import static oracle.security.crypto.util.Utils.toByteArray;
+//import static com.google.common.io.ByteStreams.toByteArray;
+
+
+@Slf4j
 @Controller //디스패처 서블릿이 컨트롤러를 찾기 위해서 @Controller라는 어노테이션을 선언
 @RequestMapping(path = "/otherpage")   //미리 경로를 지정해줘서 앞 경로를 생략 가능하게 됨
 public class ItemController {
@@ -29,136 +34,135 @@ public class ItemController {
     //Autowired는 왜 쓰이는가? = controller가 service를 주입당하겠다고 선언
     @Autowired
     private ItemController(ItemService itemService) {
-        this.itemService = itemService; // 생성자 주입 방식
+        this.itemService = itemService;
     }
-
-//    @GetMapping("/addItem")
-//    public String insertItem() {
-////        System.out.println(item.getItemName());
-//        System.out.println("get addItem1");
-//
-//        return "/otherpage/addItem";
-//    }
-
-//    @PostMapping("/addItem")
-//    public String insertItem(@Nullable Item item, Model model) {
-//        System.out.println("-------------------------------------");
-//        System.out.println(item);
-//        System.out.println("-------------------------------------");
-//
-////        //Item : 클라이언트에서 서버로 데이터를 받는 Entity
-////        //model : 서버에서 클라이언트로 데이터를 전송하는 매개체
-////        System.out.println(item.getItemName());
-////        //model : 컨트롤러에서 작업한 결과물을 HTML에 전달하기 위한 매개체
-////        //addAttribute : key/value으로 데이터를 저장하는 메서드
-////        //attributeName(key) : 뒤에 있는 value를 호출하기 위한 문자열(key)
-////        //memberService.getMemberList() : @Autowired로 선언된 MemberService 클래스를 호출하여
-////        //getMemberList()메서드 실행
-////        //model.addAttribute("Item", item); //키 Item,
-////
-//        String itemChoice = itemService.insertItem(item);    //들어온 값을
-//        Optional<Item> test =  itemService.getItem(itemChoice);
-//        model.addAttribute("itemList", test);   //엔티티의 아이템 리스트로 값 저장
-////
-////        itemService.insertItem(item);   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-////
-////        //클라이언트에서 board객체를 받아서 매개변수로 사용
-////        //[1]BoardService의 inserBoard메서드 실행 >
-////        //[2]BoardRepository(CrudRepository).save(board)를 통해서 (JPA번역)
-////        //DB의 저장 (SQL)
-////        //insertBoard라는 메서드에 board객체 인자값으로 넣기
-////
-////        // 입력받은 데이터 추가하기 위하여 Jpa 상속받은 서비스 추가
-////        //데이터 오입력으로 400
-//        return  "redirect:/otherpage/addItem";
-
-
-
-//        //retrun 타입이 String이유 : HTML 파일명을 찾기 위해
-//
-//        //리스트로 받아오고 그거를 나타낼 수 있는 페이지 하나 만들어서 테스트해보기
- //   }
 
 
     @GetMapping("/addItem")
     public String insertItems(Item item, Model model) {
-//        System.out.println(item.getItemName());
         System.out.println("get addItem1");
-        Item item1 = new Item(
-                item.getId(),
-                item.getPhoto(),
-                item.getItemName(),
-                item.getItemText(),
-                item.getPrice(),
-                item.getDelivery(),
-                item.getMainCategory(),
-                item.getSubCategory(),
-                item.getSeller(),
-                item.getPacking(),
-                item.getShelfLife(),
-                item.getStock(),
-                item.getDetailText(),
-                item.getDetailPhoto()
-        );
-        model.addAttribute("item", item1);
         return "/otherpage/addItem";
-    }
-        @PostMapping("/addItem")
-                public String insertItemss(Item item, Model model) {
-            itemService.insertItems(item);
-            return "redirect:/otherpage/addTest";
-        }
-
-    @GetMapping("/addTest")
-    public String itemList(Model model){
-        model.addAttribute("item",
-                itemService.itemListss(
-                        itemService.itemLists()));
-        return "/otherpage/addTest";
     }
 
     @PostMapping("/addItem")
-    public String insertPhoto(Item item, @Nullable @RequestParam("Photo")MultipartFile[] Photo) {
-        //@Nullable@RequestPanam(
-        //MultipartFile을 클라이언트에서 받아오고, 데이터가 없더라도 허용(@Nullable)
-        try{
-            Long item_seq = itemService.insertItems(item);   //배낀곳에선 Long타입 선언한 item 사용
+    public String insertItemss(Model model, Item item,
+                               @Nullable @RequestParam("uploadPhoto") MultipartFile[] uploadPhoto) {
+        System.out.println("post addItem1");
+        System.out.println(item.getId());
+        try {
+            long file_seq = itemService.insertItems(item);
             List<FileUploadEntity> list = new ArrayList<>();
-            for(MultipartFile file : Photo) {
-                //MultipartFile로 클라이언트에서 온 데이터가 무결성 조건에 성립을 안하거나
-                // 메타데이터가 없거나 문제가 생길 여지를 if 문으로 처리
+            for (MultipartFile file : uploadPhoto) {
                 if (!file.isEmpty()) {
-                    FileUploadEntity
-                            entity = new FileUploadEntity(
-                                    null,
+                    FileUploadEntity entity = new FileUploadEntity(
+                            null,
                             UUID.randomUUID().toString(),
                             file.getContentType(),
                             file.getName(),
                             file.getOriginalFilename(),
-                            item_seq
-                    );  //fileuploadtable에 저장
+                            file_seq
+                    );
                     itemService.insertFileUploadEntity(entity);
                     list.add(entity);
-                    File newFileName = new File(entity.getUuid() + "-" + entity.getOriginalFileName());
-                    //서버에 이미지 파일
+                    File newFileName = new File(entity.getUuid() + "_" + entity.getOriginalFilename());
+                    System.out.println(file.getOriginalFilename());
                     file.transferTo(newFileName);
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/otherpage/addTest";
+//        itemService.insertItems(item);
+        System.out.println(item);
+        return "redirect:/otherpage/itemList";
+
+    }
+
+    @PostMapping("/uploadPhoto")
+    public String uploadPhoto(@RequestParam("uploadPhoto") MultipartFile[] uploadPhoto,
+                              @RequestParam("seq") Long intput_seq) throws IOException {
+        log.info("img load session");
+        List<FileUploadEntity> list = new ArrayList<>();
+        for (MultipartFile file : uploadPhoto) {
+            if (!file.isEmpty()) {
+                FileUploadEntity entity = new FileUploadEntity(
+                        null,
+                        UUID.randomUUID().toString(),
+                        file.getContentType(),
+                        file.getName(),
+                        file.getOriginalFilename(),
+                        intput_seq
+                );
+                Long output = itemService.insertFileUploadEntity(entity);
+                log.info("seq check");
+                log.info(output.toString());
+                list.add(entity);
+                File newFileName = new File(entity.getUuid() + "_" + entity.getOriginalFilename());
+                file.transferTo(newFileName);
+            }
+        }
+        return "/otherpage/addItem";
+    }
+
+    @GetMapping("/itemList")
+    public String ItemList(Item item, Model model) {
+        System.out.println("get ItemList");
+        List<Item> itemList = itemService.getItemLists(item);
+        model.addAttribute("itemList", itemList);
+        return "/otherpage/itemList";
+    }
+
+
+//    @GetMapping("/itemList")      //상세페이지 용
+//    public String ItemLists(Item item, Model model) {
+//
+//        List<FileUploadEntity> fileUploadEntity = itemService.getFileUploadEntity(item.getId());
+//        List<String> path = new ArrayList<>();
+//        for (FileUploadEntity fe : fileUploadEntity) {
+//            String savePath = "/item/image/" + fe.getUuid() + "_" + fe.getOriginalFilename();
+//            path.add(savePath);
+//        }
+////        List<Item> itemList = itemService.getItemLists(item);
+////        model.addAttribute("itemList", itemList);
+//        model.addAttribute("item", itemService.getItem(item));              // 작성 보드 불러오기
+////        model.addAttribute("boardPrv", ItemService.getPagesSortIndex(board));  // 정렬
+//        model.addAttribute("imgLoading", path);                                 // 이미지 출력
+////        model.addAttribute("imgLoading", path+"/filer");
+//        return "/otherpage/itemList";
+//    }
+
+
+    @GetMapping(value = "/image/{imagename}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> imageLoding(@PathVariable("imagename") String imgname) throws IOException {
+        // ResponseEntity<byte[]> : 메서드 리턴타임으로 이미지 데이터를 송신하기 위한 객체<바이트 배열>
+        // throws IOException : 스트림 방식으로 데이터를 전송할 떄 도중에 오류가 날 경우를 찾기 위해서 선언한 Exception
+        String path = "\\Users\\wag19\\Documents\\Spring\\project\\src\\main\\resources\\static\\upload\\" + imgname;
+        // File을 컴퓨터가 이해하기 위해서 stream 배열을 만들어서 작업
+        // 객체(데이터 저장) : String, int, double
+        // Stream 객체는 파일을 컴퓨터가 cpu에서 바로 읽어들일 수 있도록 하는 객체
+        FileInputStream fis = new FileInputStream(path);
+        // Buffered : cpu에서 데이터 읽어올 때 메모리와 캐시 사이에서 cpu와의 속도 차이를 줄이기 위한 중간 저장 위치
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        // byte배열로 전환하여 ResponseEntity를 통해 클라이언트에게 데이터 전달
+        // HTTP프로토콜은 바이트 단위(배열)로 데잍를 주고 받음
+        byte[] imgByteArr = bis.readAllBytes();
+        // ResponseEntity를 통해 http 프로토콜로 클라이언트에게 데이터 전송
+
+        // http 프로토콜은 바이트 배열로 데이터를 주고 받기 때문에 stream이나 버퍼를 통해 전환
+        return new ResponseEntity<byte[]>(imgByteArr, HttpStatus.OK);
     }
 
 
 
 
 
-
-
-
-
-
-
+//    @GetMapping(value = "/image/{imagename}/filter", produces = MediaType.IMAGE_PNG_VALUE)
+//    public ResponseEntity<byte[]> imagefilter(@PathVariable("imagename") String imagename) throws IOException{
+//        InputStream imageStream = new FileInputStream(
+//                "\\Users\\wag19\\Documents\\Spring\\project\\src\\main\\resources\\static\\upload\\" + imagename);
+//        byte[] imageByteArray = toByteArray(imageStream);
+//        imageStream.close();
+//        log.info("image");
+//        return new ResponseEntity<byte[]>(imageByteArray, HttpStatus.OK);
+//    }
 }

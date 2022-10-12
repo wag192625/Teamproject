@@ -10,6 +10,6 @@ import java.util.List;
 public interface FileUploadRepository extends JpaRepository<FileUploadEntity, Long> {
     //findBy: 튜플을 찾겠다
     //BoardSeq: BoardSeq 컬럼에 데이터를 찾겠다. 왜??
-    List<FileUploadEntity> findByItemSeq(Long boardSeq);
+    List<FileUploadEntity> findByItemSeq(Long itemSeq);
     //item Entitiy의 기본키는 id 인데 가져오는곳에서 seq로 써서 일단 seq로 써봄
 }
