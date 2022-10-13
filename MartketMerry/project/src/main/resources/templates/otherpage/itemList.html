@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>addTest</title>
+</head>
+<body>
+<h1>addTest</h1>
+<table>
+	<tr>
+		<th>상품 이미지</th>
+		<th>상품 이름</th>
+		<th>상품 설명</th>
+		<th>상품 가격</th>
+		<th>판매자</th>
+		<th>재고 수량</th>
+	</tr>
+<!--	<tr th:each="img :${imgLoading}">-->
+<!--		<td ><img th:src="@{${img}}" alt="gallery" style="width: 60px; height: 80px;" ></td>-->
+<!--	</tr>-->
+	<tr th:each="itemLists :${itemList}">		<!-- model에 저장한 값을 불러옴  -->
+		<td th:text="${itemLists.itemName}">	</td>
+		<td th:text="${itemLists.itemText}">	</td>
+		<td th:text="${itemLists.price}">			</td>
+		<td th:text="${itemLists.seller}">		</td>
+		<td th:text="${itemLists.stock}">			</td>
+	</tr>
+</table>
+<br>
+<a href="/otherpage/addItem">상품등록 페이지로 이동</a>
+</body>
+</html>
