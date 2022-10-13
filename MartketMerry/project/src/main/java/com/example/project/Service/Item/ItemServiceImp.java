@@ -3,6 +3,7 @@ package com.example.project.Service.Item;
 import com.example.project.Entity.data.FileUploadEntity;
 import com.example.project.Entity.item.Item;
 import com.example.project.Repository.Item.ItemRepository;
+import com.example.project.Repository.fileTest.FileUploadInfoRepository;
 import com.example.project.Repository.fileTest.FileUploadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,14 +14,15 @@ import java.util.List;
 public class ItemServiceImp implements ItemService{
 
     private final ItemRepository itemRepo;
-    private final FileUploadRepository fileUploadRepo;
+    private final FileUploadInfoRepository fileUploadInfoRepo;
     //서비스에서 레파지토리의 JPA를 이용하기 위하여 작성
 
     @Autowired  //Autowired는 왜 쓰이는가? = controller가 service를 주입당하겠다고 선언
     protected ItemServiceImp(ItemRepository itemRepo,
-                             FileUploadRepository fileUploadRepo){
+//                             FileUploadRepository fileUploadRepo,
+                             FileUploadInfoRepository fileUploadInfoRepo){
         this.itemRepo = itemRepo;
-        this.fileUploadRepo = fileUploadRepo;
+        this.fileUploadInfoRepo = fileUploadInfoRepo;
         //this.~~ : 값이 변하지 않는 상수로 지정
         //           = ~~ : 컨트롤러에 입력하기 위하여?? (확인 필요)
     }
@@ -94,18 +96,19 @@ public class ItemServiceImp implements ItemService{
 
     @Override
     public Long insertFileUploadEntity(FileUploadEntity fileUploadEntity) {
-        return fileUploadRepo.save(fileUploadEntity).getId();
+        return fileUploadInfoRepo.save(fileUploadEntity).getId();
     }
 
     @Override
-    public List<FileUploadEntity> getFileUploadEntity(Long item_seq) {  //스트링타입이 아니라 롱으로 바꿔야 할까?
-        return fileUploadRepo.findByItemSeq(item_seq);  //메소드 이름 자체가 쿼리이다. 가 무슨뜻?>
-    }
+    public List<FileUploadEntity> getFileUploadEntity(Long item_seq) {
+        return fileUploadInfoRepo.findByItemSeq(item_seq);  //메소드 이름 자체가 쿼리이다. 가 무슨뜻?>
+    }   //왜 파일 업로드 인포 레파지토리가 필요한가
 
     @Override
     public Item getItem(Item item) {
         return itemRepo.findById(item.getId()).get();
     }
+
 
 
 }

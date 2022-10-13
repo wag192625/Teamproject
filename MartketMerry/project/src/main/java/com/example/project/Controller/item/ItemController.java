@@ -105,7 +105,7 @@ public class ItemController {
     }
 
     @GetMapping("/itemList")
-    public String ItemList(Item item, Model model) {
+    public String ItemList(Item item, Model model, FileUploadEntity fileUploadEntity) {
         System.out.println("get ItemList");
         List<Item> itemList = itemService.getItemLists(item);
         model.addAttribute("itemList", itemList);
