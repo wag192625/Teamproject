@@ -19,15 +19,16 @@ public interface ItemService {
 //    List<Item> getItemList(Item item);  //상품 리스트 배열로
 
 
-    Long insertItems(Item item);
+    Long insertItem(Item item);
     //Long 이 Item으로 바뀜
 
     List<Item> getItemLists(Item item);
 
-    List<Item> itemListss(List<Item> itemList);
+//    List<Item> itemListss(List<Item> itemList);
 
     Long insertFileUploadEntity(FileUploadEntity fileUploadEntity);
     // 엔티티에 데이터를 저장하기 위해
+//    List<FileUploadEntity> getFileUploadEntity(Long item_id);
     List<FileUploadEntity> getFileUploadEntity(Long item_seq);
     // 아이템 entity는 String인데 파일~은 Long이어도 되는가?
     // 카멜케이스 itemSeq가 아닌 스네이크케이스 item_seq 인 이유는?

@@ -26,4 +26,5 @@ public class FileUploadEntity {
     private String  originalFilename;
 
     private Long    itemSeq;
+//    private Long    itemId;
 }

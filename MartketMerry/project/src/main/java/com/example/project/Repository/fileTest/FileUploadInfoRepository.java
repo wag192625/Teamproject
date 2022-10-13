@@ -11,6 +11,7 @@ public interface FileUploadInfoRepository extends JpaRepository<FileUploadEntity
     //findBy : 튜플을 찾겠다
     //BoardSeq : BoardSeq 컬럼에 데이터를 찾겠다
     List<FileUploadEntity> findByItemSeq(Long ItemSeq); //
+//    List<FileUploadEntity> findByItemId(Long ItemISeq); //
 
 
 }

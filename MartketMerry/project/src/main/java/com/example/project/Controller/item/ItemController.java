@@ -39,18 +39,18 @@ public class ItemController {
 
 
     @GetMapping("/addItem")
-    public String insertItems(Item item, Model model) {
+    public String insertItem(Item item, Model model) {
         System.out.println("get addItem1");
         return "/otherpage/addItem";
     }
 
     @PostMapping("/addItem")
-    public String insertItemss(Model model, Item item,
+    public String insertItem(Item item,
                                @Nullable @RequestParam("uploadPhoto") MultipartFile[] uploadPhoto) {
         System.out.println("post addItem1");
-        System.out.println(item.getId());
+        System.out.println(item.getSeq());
         try {
-            long file_seq = itemService.insertItems(item);
+            long item_seq = itemService.insertItem(item);
             List<FileUploadEntity> list = new ArrayList<>();
             for (MultipartFile file : uploadPhoto) {
                 if (!file.isEmpty()) {
@@ -60,7 +60,7 @@ public class ItemController {
                             file.getContentType(),
                             file.getName(),
                             file.getOriginalFilename(),
-                            file_seq
+                            item_seq
                     );
                     itemService.insertFileUploadEntity(entity);
                     list.add(entity);
@@ -80,7 +80,7 @@ public class ItemController {
 
     @PostMapping("/uploadPhoto")
     public String uploadPhoto(@RequestParam("uploadPhoto") MultipartFile[] uploadPhoto,
-                              @RequestParam("seq") Long intput_seq) throws IOException {
+                              @RequestParam("seq") Long input_seq) throws IOException {
         log.info("img load session");
         List<FileUploadEntity> list = new ArrayList<>();
         for (MultipartFile file : uploadPhoto) {
@@ -91,10 +91,11 @@ public class ItemController {
                         file.getContentType(),
                         file.getName(),
                         file.getOriginalFilename(),
-                        intput_seq
+                        input_seq
                 );
                 Long output = itemService.insertFileUploadEntity(entity);
-                log.info("seq check");
+                System.out.println();
+                log.info("---------------seq check---------------");
                 log.info(output.toString());
                 list.add(entity);
                 File newFileName = new File(entity.getUuid() + "_" + entity.getOriginalFilename());
@@ -105,31 +106,34 @@ public class ItemController {
     }
 
     @GetMapping("/itemList")
-    public String ItemList(Item item, Model model, FileUploadEntity fileUploadEntity) {
+    public String itemList(Item item, Model model, FileUploadEntity fileUploadEntity) {
         System.out.println("get ItemList");
         List<Item> itemList = itemService.getItemLists(item);
         model.addAttribute("itemList", itemList);
+//
+//        System.out.println(item.getSeq());
+//        System.out.println(item.getPrice());
+//        System.out.println(item.getStock());
+//        System.out.println(fileUploadEntity.getItemSeq());
         return "/otherpage/itemList";
     }
 
 
-//    @GetMapping("/itemList")      //상세페이지 용
-//    public String ItemLists(Item item, Model model) {
-//
-//        List<FileUploadEntity> fileUploadEntity = itemService.getFileUploadEntity(item.getId());
-//        List<String> path = new ArrayList<>();
-//        for (FileUploadEntity fe : fileUploadEntity) {
-//            String savePath = "/item/image/" + fe.getUuid() + "_" + fe.getOriginalFilename();
-//            path.add(savePath);
-//        }
-////        List<Item> itemList = itemService.getItemLists(item);
-////        model.addAttribute("itemList", itemList);
-//        model.addAttribute("item", itemService.getItem(item));              // 작성 보드 불러오기
-////        model.addAttribute("boardPrv", ItemService.getPagesSortIndex(board));  // 정렬
-//        model.addAttribute("imgLoading", path);                                 // 이미지 출력
-////        model.addAttribute("imgLoading", path+"/filer");
-//        return "/otherpage/itemList";
-//    }
+    @GetMapping("/getItem")      //상세페이지 용
+    public String getItem(Item item, Model model) {
+
+        List<FileUploadEntity> fileUploadEntity = itemService.getFileUploadEntity(item.getSeq());
+        List<String> path = new ArrayList<>();
+        for (FileUploadEntity fe : fileUploadEntity) {
+            String savePath = "/item/image/" + fe.getUuid() + "_" + fe.getOriginalFilename();
+            path.add(savePath);
+        }
+        model.addAttribute("item", itemService.getItem(item));              // 작성 보드 불러오기
+//        model.addAttribute("boardPrv", ItemService.getPagesSortIndex(board));  // 정렬
+        model.addAttribute("imgLoading", path);                                 // 이미지 출력
+//        model.addAttribute("imgLoading", path+"/filer");
+        return "/otherpage/getItem";
+    }
 
 
     @GetMapping(value = "/image/{imagename}", produces = MediaType.IMAGE_PNG_VALUE)

@@ -4,7 +4,6 @@ import com.example.project.Entity.data.FileUploadEntity;
 import com.example.project.Entity.item.Item;
 import com.example.project.Repository.Item.ItemRepository;
 import com.example.project.Repository.fileTest.FileUploadInfoRepository;
-import com.example.project.Repository.fileTest.FileUploadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,7 +72,7 @@ public class ItemServiceImp implements ItemService{
 
     //아이템 등록
     @Override
-    public Long insertItems(Item item) {
+    public Long insertItem(Item item) {
 //        itemRepo.save(item);
         return itemRepo.save(item).getId();
     }
@@ -83,16 +82,11 @@ public class ItemServiceImp implements ItemService{
     public List<Item> getItemLists(Item item) {
         return itemRepo.findAll();
     }
-//    //아이템 리스트
-//    @Override
-//    public List<Item> itemLists(Item item) {
-//        return itemRepo.findAll();
-//    }
 
-    @Override
-    public List<Item> itemListss(List<Item> itemList) {
-        return itemList;
-    }
+//    @Override
+//    public List<Item> itemListss(List<Item> itemList) {
+//        return itemList;
+//    }
 
     @Override
     public Long insertFileUploadEntity(FileUploadEntity fileUploadEntity) {
@@ -102,7 +96,7 @@ public class ItemServiceImp implements ItemService{
     @Override
     public List<FileUploadEntity> getFileUploadEntity(Long item_seq) {
         return fileUploadInfoRepo.findByItemSeq(item_seq);  //메소드 이름 자체가 쿼리이다. 가 무슨뜻?>
-    }   //왜 파일 업로드 인포 레파지토리가 필요한가
+    }   //왜 파일 업로드 인포 레파지토리가 필요한가   //item_seq에서 item_id로 변경
 
     @Override
     public Item getItem(Item item) {

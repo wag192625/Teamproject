@@ -25,10 +25,11 @@ public class Item {
    //기본 키(PK Key) 지정
     @Id     // 기본 키의 자동 생성 전략 (?)
     @GeneratedValue
-    private Long  id;
-//    private String  seq;            //상품 번호
+    private Long  seq;            //상품 번호
 
-//    @Column     //컬럼이란? 객체 필드를 테이블의 컬럼에 매핑시켜줌
+    @Column
+    private Long  id;
+    //    @Column     //컬럼이란? 객체 필드를 테이블의 컬럼에 매핑시켜줌
 //    private String  photo;          //상품 사진 저장한 url
     @Column
     private String  itemName;       //상품 이름
